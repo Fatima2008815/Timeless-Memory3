@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>على خطى خير البرية ﷺ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <style>
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background: radial-gradient(circle at top, #1a1a2e, #16213e);
+  color: #fff;
+  overflow-x: hidden;
+  font-size: 1rem; /* قاعدة لحجم الخط */
+}
+
+header {
+  background: linear-gradient(to right, #ffd700, #3f391f);
+  color: #000;
+  padding: 2.5vh 1vw; /* استخدام vh و vw لتناسب الشاشات */
+  text-align: center;
+  font-size: 4vw; /* حجم خط متناسب مع الشاشة */
+  font-weight: bold;
+  box-shadow: 0 0.4vh 1vh rgba(0,0,0,0.3);
+}
+
+.intro {
+  text-align: center;
+  padding: 5vh 2vw;
+  font-size: 1.5em;
+}
+
+.intro button {
+  margin: 1vh;
+  padding: 1vh 2vw;
+  font-size: 1em;
+  border: none;
+  border-radius: 0.8em;
+  background-color: #ffd700;
+  cursor: pointer;
+}
+
+.intro button:hover {
+  background-color: #ffcc00;
+}
+
+nav {
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1vw;
+  background-color: #111;
+  padding: 1vh 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 1vh 1.5vw;
+  border-radius: 0.5em;
+  font-size: 1em;
+  transition: 0.3s;
+}
+
+nav button.active {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+
+nav button.completed::after {
+  content: " ✔️";
+}
+
+section {
+  display: none;
+  padding: 5vh 2vw;
+  animation: fadeIn 1s ease-in-out;
+}
+
+section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+h2 {
+  font-size: 3vw;
+  margin-bottom: 2vh;
+  color: #ffd700;
+}
+
+p {
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin-bottom: 2vh;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.next-btn {
+  margin-top: 3vh;
+  padding: 1vh 2vw;
+  font-size: 1em;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.next-btn:hover {
+  background-color: #ffcc00;
+}
+
+/* Media Queries للأجهزة الصغيرة */
+@media (max-width: 768px) {
+  header {
+    font-size: 6vw;
+    padding: 2vh 2vw;
+  }
+  h2 {
+    font-size: 5vw;
+  }
+  .intro {
+    font-size: 1.2em;
+  }
+  nav button {
+    padding: 1vh 2vw;
+    font-size: 0.9em;
+  }
+}
+</style>
+
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <header>🌟 على خطى خير البرية ﷺ</header>
+
+  <div class="intro" id="intro">
+    <p>هل تعلم ما الذي يجعل هذا اليوم، 12 ربيع الأول، مميزًا في قلوب المسلمين؟</p>
+    <button onclick="startJourney(true)">نعم</button>
+    <button onclick="startJourney(false)">لا</button>
+  </div>
+
+  <nav id="navbar">
+    <button onclick="showPage('birth')" id="btn-birth">🌟 إشراقة الميلاد</button>
+    <button onclick="showPage('mission')" id="btn-mission">📜 نداء السماء</button>
+    <button onclick="showPage('lineage')" id="btn-lineage">🌳 الجذور الطيبة</button>
+    <button onclick="showPage('migration')" id="btn-migration">🕊️ الرحلة المباركة</button>
+    <button onclick="showPage('moments')" id="btn-moments">🔆 مواقف من النور</button>
+    <button onclick="showPage('morals')" id="btn-morals">💎 خُلق عظيم</button>
+    <button onclick="showPage('love')" id="btn-love">❤️ لماذا نحبه؟</button>
+    <button onclick="showPage('family')" id="btn-family">👨‍👩‍👧 أسرته</button>
+    <button onclick="showPage('quiz')" id="btn-quiz">🧠 اختبر معرفتك</button>
+    <button onclick="showPage('conclusion')" id="btn-conclusion">💖ختام</button>
+   
+  </nav>
+
+  <section id="birth">
+  <h2>🌟 إشراقة الميلاد</h2>
+  <div class="birth-box">
+    <p>في الثاني عشر من ربيع الأول، عام الفيل، شهدت مكة ولادة أعظم البشر، محمد ﷺ، الذي أتى نورًا وهداية للعالمين. وُلد يتيماً، فقد توفي والده عبد الله قبل مولده، ثم فقد والدته آمنة رضي الله عنها وهو في سن مبكرة، فكان لهذه المصاعب أثر كبير في تكوين شخصيته الرحيمة والقوية. نشأ ﷺ في كنف جده عبد المطلب، ثم عمه أبو طالب، وتحلى منذ صغره بالصدق والأمانة حتى عرف بين قومه بـ"الصادق الأمين". في ميلاده ﷺ، وُلِد أمل البشرية، رحمة للعالمين، وبدأت رحلة حياة مليئة بالخير والحق، لتكون قصته منارة لكل الأجيال.</p>
+  </div>
+  <button class="next-btn" onclick="goToNext('mission')">التالي →</button>
+</section>
+
+<style>
+.birth-box {
+  background: linear-gradient(145deg, #ffecb3, #ffe082);
+  color: #1a1a1a;
+  border-radius: 2vw; /* بدلاً من 20px */
+  padding: 3vh 2vw; /* padding عمودي وأفقي متناسب مع الشاشة */
+  box-shadow: 0 0.8vh 2vh rgba(0,0,0,0.4);
+  line-height: 1.8;
+  font-size: 1.5vw; /* حجم خط متناسب مع عرض الشاشة */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.birth-box:hover {
+  transform: translateY(-0.5vh); /* بدلاً من -5px */
+  box-shadow: 0 1.2vh 3vh rgba(0,0,0,0.5);
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .birth-box {
+    border-radius: 4vw;
+    padding: 4vh 4vw;
+    font-size: 3.5vw;
+  }
+}
+</style>
+
+<section id="mission">
+  <h2>📜 نداء السماء</h2>
+  <div class="mission-box">
+    <div class="mission-item">
+      <div class="mission-title">المقدمة: انتظار الرحمة</div>
+      <div class="mission-text">بعد أن بلغ محمد ﷺ الأربعين من عمره، كان يعيش حياة مليئة بالتأمل والعبادة في غار حراء، بعيدًا عن صخب الحياة في مكة. كان قلبه متطلعًا للهداية، وروحه صافية لتلقي الرسالة العظيمة التي ستغير وجه العالم.</div>
+    </div>
+    <div class="mission-item">
+      <div class="mission-title">اللحظة العظيمة: نزول الوحي</div>
+      <div class="mission-text">في إحدى الليالي المظلمة، بينما كان يتأمل ﷺ في الغار، جاءه الملَك جبريل عليه السلام يحمل رسالة الله. قال له: "اقرأ!". كانت تلك اللحظة بداية نزول القرآن، وكانت أول كلمات الوحي: "اقرأ باسم ربك الذي خلق".</div>
+    </div>
+    <div class="mission-item">
+      <div class="mission-title">الخوف والاطمئنان</div>
+      <div class="mission-text">شعر ﷺ بالخوف والرهبة، فقد كان لم يعتد على مثل هذا اللقاء. عاد إلى بيته مرتبكًا، فطمأنته زوجته السيدة خديجة رضي الله عنها، وقالت له: "والله لن يخزيك الله، إنك لتصل الرحم وتصدق الحديث وتكسب المعدوم وتعين على نوائب الحق".</div>
+    </div>
+    <div class="mission-item">
+      <div class="mission-title">الرسالة والرحمة</div>
+      <div class="mission-text">بدأ ﷺ ينشر رسالة التوحيد، ويعلم الناس الرحمة والعدل، ويهديهم من الظلمات إلى النور. كان الوحي ﷺ مصدر هداية ورحمة لكل البشر، يعلم الأخلاق الفاضلة ويحث على المحبة والتعاون والصبر.</div>
+    </div>
+    <div class="mission-item">
+      <div class="mission-title">الخاتمة: بداية عصر جديد</div>
+      <div class="mission-text">كان نزول الوحي نقطة تحول في حياة البشرية، فقد أضاء الله ببركات النبي ﷺ طريق الهداية، وبدأت رحلة رسالة الإسلام التي وصلت للعالم كله، لتكون دعوة للحق والسلام والرحمة.</div>
+    </div>
+  </div>
+  <button class="next-btn" onclick="goToNext('lineage')">التالي →</button>
+</section>
+
+<style>
+.mission-box {
+  background: linear-gradient(145deg, #23365f, #5477af);
+  color: #1a1a1a;
+  border-radius: 2vw; /* بدلاً من 20px */
+  padding: 3vh 2vw; /* padding متناسب مع الشاشة */
+  box-shadow: 0 0.8vh 2vh rgba(0,0,0,0.4);
+  line-height: 1.8;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh; /* بدلاً من 30px */
+  position: relative;
+}
+
+.mission-item {
+  position: relative;
+  padding-left: 5vw; /* بدلاً من 50px */
+}
+
+.mission-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5em;
+}
+
+.mission-title {
+  font-weight: bold;
+  color: #ffa200;
+  font-size: 1.5vw; /* بدلاً من 1.5em لتناسب الشاشة */
+  margin-bottom: 1vh; /* بدلاً من 10px */
+  position: relative;
+}
+
+.mission-title::after {
+  content: '';
+  display: block;
+  width: 5vw; /* بدلاً من 50px */
+  height: 0.3vh; /* بدلاً من 3px */
+  background-color: #ffa200;
+  margin-top: 0.5vh; /* بدلاً من 5px */
+  border-radius: 0.2vh; /* بدلاً من 2px */
+}
+
+.mission-text {
+  color: #ffffff;
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  line-height: 1.8;
+  padding-left: 1vw; /* بدلاً من 10px */
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .mission-box {
+    border-radius: 4vw;
+    padding: 4vh 4vw;
+    gap: 4vh;
+  }
+  .mission-item {
+    padding-left: 10vw;
+  }
+  .mission-title {
+    font-size: 4vw;
+    margin-bottom: 2vh;
+  }
+  .mission-title::after {
+    width: 10vw;
+    height: 0.5vh;
+    margin-top: 1vh;
+    border-radius: 0.3vh;
+  }
+  .mission-text {
+    font-size: 3.5vw;
+    padding-left: 2vw;
+  }
+}
+</style>
+
+
+  <section id="lineage">
+  <h2>🌳 الجذور الطيبة</h2>
+  <div class="lineage-box">
+    <!-- أيقونات النسب -->
+    <div class="icon-box">
+      <div class="lineage-icon special" onclick="showProphetName()">اسم النبيﷺ</div>
+      
+      
+      <div class="lineage-icon" onclick="showText('father')">الوالد</div>
+      
+      
+      <div class="lineage-icon" onclick="showText('mother')">الأم</div>
+      
+      
+      <div class="lineage-icon" onclick="showText('grandfather')">الجد</div>
+      
+      
+      <div class="lineage-icon" onclick="showText('uncle')">العم</div>
+      
+    </div>
+
+    <!-- صندوق النصوص -->
+    <div class="lineage-text-box" id="lineageText">
+      اضغط على أي أيقونة لعرض المعلومات
+    </div>
+  </div>
+  <button class="next-btn" onclick="goToNext('migration')">التالي →</button>
+</section>
+
+<style>
+.lineage-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh; /* بدلاً من 30px */
+  background: linear-gradient(145deg, #f2dd87, #f9c311);
+  padding: 3vh 2vw; /* padding عمودي وأفقي متناسب */
+  border-radius: 2vw; /* بدلاً من 20px */
+  box-shadow: 0 0.8vh 2.5vh rgba(255, 255, 255, 0.4);
+  color: #1a1a1a;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  gap: 3vw; /* بدلاً من 30px */
+  flex-wrap: wrap;
+}
+
+.lineage-icon {
+  background-color: #323767d2;
+  width: 8vw; /* بدلاً من 80px */
+  height: 8vw;
+  border-radius: 50%;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ffffff;
+  box-shadow: 0 0.4vh 1vh rgba(0,0,0,0.3);
+}
+
+.lineage-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0.6vh 1.5vh rgba(0,0,0,0.5);
+}
+
+.lineage-icon.special {
+  background-color: #1e2e51;
+  color: #fff;
+}
+
+.icon-label {
+  text-align: center;
+  margin-top: 0.5vh; /* بدلاً من 5px */
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.lineage-text-box {
+  background-color: #111d6187;
+  color: #fff9f9;
+  border-radius: 1.5vw; /* بدلاً من 15px */
+  padding: 2vh 2vw; /* padding متناسب */
+  width: 80%;
+  min-height: 15vh; /* بدلاً من 150px */
+  box-shadow: inset 0 0.4vh 1vh rgba(0,0,0,0.2);
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .lineage-box {
+    gap: 4vh;
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+  }
+  .icon-box {
+    gap: 6vw;
+  }
+  .lineage-icon {
+    width: 16vw;
+    height: 16vw;
+  }
+  .icon-label {
+    font-size: 3.5vw;
+  }
+  .lineage-text-box {
+    font-size: 3.5vw;
+    border-radius: 4vw;
+    padding: 4vh 4vw;
+    min-height: 25vh;
+  }
+}
+</style>
+
+
+<script>
+const texts = {
+  father: "🌟 والده: عبد الله بن عبد المطلب توفي قبل مولد النبي ﷺ، فلم يلتقِ به.",
+  mother: "🌟 والدته: آمنة بنت وهب توفيت وهو صغير، فتولى جده عبد المطلب رعايته، ثم عمه أبو طالب.",
+  grandfather: "🌟 جده: عبد المطلب بن هاشم كان له دور كبير في تربية النبي ﷺ وحمايته، ويشتهر بالكرم والعناية بالحجيج.",
+  uncle: "🌟 عمه: أبو طالب كان سندًا له وحاميًا للدعوة، وكان معروفًا بشجاعته وكرمه."
+};
+
+function showText(key) {
+  const box = document.getElementById('lineageText');
+  box.textContent = texts[key];
+}
+
+// عرض اسم النبي تدريجيًا كلمة كلمة
+function showProphetName() {
+  const box = document.getElementById('lineageText');
+  const fullName = "🌟 الاسم الكامل للنبي ﷺ: محمد بن عبد الله بن عبد المطلب بن هاشم بن عبد مناف بن قصي بن كلاب بن مرة بن كعب بن لؤي بن غالب بن فهر (قريش) بن مالك بن النضر بن كنانة بن خزيمة بن مدركة بن إلياس بن مضر بن نزار بن معد بن عدنان";
+  const words = fullName.split(" ");
+  box.textContent = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < words.length) {
+      box.textContent += (i === 0 ? "" : " ") + words[i];
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 200); // يظهر كل كلمة بعد 0.2 ثانية
+}
+</script>
+
+  </section>
+
+  <section id="migration">
+  <h2>🕊️ الرحلة المباركة</h2>
+  <div class="migration-box">
+    <p>في مكة، وسط الظلم والاضطهاد، جاء أمر الله للنبي ﷺ بالهجرة إلى المدينة المنورة. كان قلبه مطمئنًا لأنه يعلم أن الله معه، 
+      <span class="highlight">قال تعالى: "فَإِذَا فَرَغْتَ فَانْصَبْ وَإِلَى رَبِّكَ فَارْغَبْ" [الشرح: 7-8]</span>.
+    </p>
+    <p>انطلق النبي ﷺ مع صديقه وأقرب الناس إليه، أبو بكر رضي الله عنه، في سرية تامة لتجنب أعين المشركين. وعندما دخلا غار ثور ليختبئا من أعين الأعداء، بدأ القلق يراود قلب أبو بكر، لكن النبي ﷺ خاطبه بكلمات ملؤها الطمأنينة: 
+      <span class="highlight">"لا تحزن إن الله معنا" [سورة التوبة: 40]</span>، فهدأت نفسه وازداد إيمانه وثقته بالله.
+    </p>
+    <p>في الغار، أحاطهما الله بالحماية، وظل أعداؤهما يبحثون عنهما بلا جدوى. وبعد أيام صعبة ومليئة بالتحديات، استأنفا رحلتهما عبر الصحراء حتى وصلوا إلى المدينة المنورة، حيث استقبلهما أهلها بالفرح والسرور، معلنين بداية فصل جديد من الدعوة الإسلامية، مليء بالسلام والهداية والخير.</p>
+    <p>كانت الهجرة ﷺ أكثر من رحلة انتقال؛ كانت درسًا في الصبر والثقة بالله، ومثالًا حيًا على أن النصر دائمًا مع من يضع ثقته في ربه، وأن الطمأنينة الحقيقية تأتي من اليقين بالله مهما اشتدت المخاطر.</p>
+    <p class="hadith-highlight">قال تعالى: "ومَن يَتَّقِ اللهَ يَجْعَلْ له مخرجًا" [الطلاق: 2]</p>
+  </div>
+  <button class="next-btn" onclick="goToNext('moments')">التالي →</button>
+</section>
+
+<style>
+.migration-box {
+  background: linear-gradient(145deg, #feffff8a, #0e215b6a);
+  padding: 3vh 2vw; /* بدلاً من 30px */
+  border-radius: 2vw; /* بدلاً من 20px */
+  box-shadow: 0 0.8vh 2.5vh rgba(0,0,0,0.4);
+  color: #ffffff;
+  font-size: 1.3vw; /* بدلاً من 1.3em */
+  line-height: 1.8;
+  text-align: justify;
+  position: relative;
+}
+
+.highlight {
+  color: #ffd600; /* لون مضيء للآيات */
+  font-weight: bold;
+  background-color: rgba(255, 214, 0, 0.2);
+  padding: 0.2vh 0.6vw; /* بدلاً من 2px 6px */
+  border-radius: 0.5vw; /* بدلاً من 5px */
+}
+
+.hadith-highlight {
+  color: #ff9100;
+  font-weight: bold;
+  background-color: rgba(255, 111, 0, 0.2);
+  padding: 0.4vh 0.8vw; /* بدلاً من 4px 8px */
+  border-radius: 0.5vw;
+  margin-top: 2vh; /* بدلاً من 20px */
+  display: inline-block;
+}
+
+.migration-box::before {
+  content: "";
+  font-size: 3vw; /* بدلاً من 3em */
+  position: absolute;
+  top: -2vh; /* بدلاً من -20px */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .migration-box {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    font-size: 3.5vw;
+  }
+  .highlight {
+    padding: 0.5vh 1vw;
+    border-radius: 1vw;
+  }
+  .hadith-highlight {
+    padding: 1vh 2vw;
+    border-radius: 1vw;
+    margin-top: 3vh;
+  }
+  .migration-box::before {
+    font-size: 8vw;
+    top: -4vh;
+  }
+}
+</style>
+
+
+<section id="moments">
+    <h2>🔆 مواقف من النور</h2>
+    <div class="moments-grid">
+      <div class="moment-box">
+        <p>عفو النبي ﷺ عن أهل مكة يوم الفتح، رغم ما فعلوه به من ظلم وأذى.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="العفو يعكس القوة ويزيد الحب بين الناس.">العبرة</button>
+      </div>
+      <div class="moment-box">
+        <p>تعامل النبي ﷺ مع الأعرابي الذي جذبه بردائه، فأجابه بلين ورحمة.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="اللطف والرحمة يكسبان القلوب ويُظهران جمال الأخلاق.">العبرة</button>
+      </div>
+      <div class="moment-box">
+        <p>بكاء النبي ﷺ عند قبر والدته، مع صبره الكبير وتحمله للمصاعب.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="الحنان والمشاعر الصادقة جزء من الإنسانية، حتى أعظم الناس.">العبرة</button>
+      </div>
+      <div class="moment-box">
+        <p>توجيه النبي ﷺ لصغاره وعنايته بهم، حتى في أصغر الأمور اليومية.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="الاهتمام بالتفاصيل الصغيرة يعكس الرحمة والقدوة الحسنة.">العبرة</button>
+      </div>
+      <div class="moment-box">
+        <p>شجاعة النبي ﷺ في غزوة أحد رغم إصابته وجراحه.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="الصبر والثبات في الشدائد دليل الإيمان وقوة القيادة.">العبرة</button>
+      </div>
+      <div class="moment-box">
+        <p>تواضع النبي ﷺ في جلوسه مع أصحابه وخدمته لنفسه في بيته.</p>
+        <button class="lesson-btn" onclick="showLesson(this)" data-lesson="التواضع يرفع مكانة الإنسان في قلوب الناس ويزيد محبته.">العبرة</button>
+      </div>
+    </div>
+  
+    <!-- مربع العبرة -->
+    <p id="lessonDisplay" class="lesson-display"></p>
+  
+    <button class="next-btn" onclick="goToNext('morals')">التالي →</button>
+  </section>
+  
+  <style>
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr)); /* بدلاً من 280px */
+  gap: 3vh; /* بدلاً من 30px */
+  padding: 2vh 0; /* بدلاً من 20px */
+}
+
+.moment-box {
+  background: linear-gradient(145deg, #ffecb3, #ffe082);
+  padding: 2.5vh 2vw; /* بدلاً من 25px */
+  border-radius: 2vw; /* بدلاً من 20px */
+  box-shadow: 0 0.8vh 2vh rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #4e342e;
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  line-height: 1.6;
+}
+
+.moment-box:hover {
+  transform: translateY(-0.5vh); /* بدلاً من -5px */
+  box-shadow: 0 1.2vh 2.5vh rgba(0,0,0,0.4);
+}
+
+.lesson-btn {
+  margin-top: 1.5vh; /* بدلاً من 15px */
+  background-color: #ffca28;
+  border: none;
+  padding: 0.8vh 1.5vw; /* بدلاً من 8px 15px */
+  border-radius: 1vw; /* بدلاً من 10px */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.lesson-btn:hover {
+  background-color: #ffd54f;
+}
+
+.lesson-display {
+  margin-top: 3vh; /* بدلاً من 30px */
+  font-size: 1.3vw; /* بدلاً من 1.3em */
+  color: #fff9c4;
+  background-color: rgba(0,0,0,0.6);
+  padding: 1.5vh 2vw; /* بدلاً من 15px */
+  border-radius: 1.5vw; /* بدلاً من 15px */
+  min-height: 5vh; /* بدلاً من 50px */
+  text-align: center;
+  transition: opacity 0.5s;
+  opacity: 0; /* يبدأ مخفي */
+}
+
+.moral-btn {
+  font-family: inherit; /* نفس خط النص المستخدم في وصف الأخلاق */
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .moments-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60vw, 1fr));
+    gap: 4vh;
+    padding: 4vh 2vw;
+  }
+  .moment-box {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    font-size: 3.5vw;
+  }
+  .lesson-btn {
+    padding: 1.5vh 4vw;
+    border-radius: 3vw;
+    font-size: 3.5vw;
+  }
+  .lesson-display {
+    padding: 3vh 4vw;
+    font-size: 3.5vw;
+    border-radius: 4vw;
+    min-height: 10vh;
+  }
+}
+</style>
+
+  
+  <script>
+  function showLesson(btn) {
+    const lesson = btn.getAttribute('data-lesson');
+    const display = document.getElementById('lessonDisplay');
+    
+    display.style.opacity = 0;
+    setTimeout(() => {
+      display.textContent = lesson;
+      display.style.opacity = 1;
+      // تمرير ناعم للمربع
+      display.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  }
+  </script>
+  
+  <section id="morals">
+  <h2>💎 أخلاق النبي ﷺ وكيفية التحلي بها</h2>
+  
+  <div id="morals-list" class="morals-grid">
+    <button class="moral-btn" onclick="showMoral(1)">🌟 الصدق والأمانة</button>
+    <button class="moral-btn" onclick="showMoral(2)">🌟 الرحمة والتسامح</button>
+    <button class="moral-btn" onclick="showMoral(3)">🌟 التواضع</button>
+    <button class="moral-btn" onclick="showMoral(4)">🌟 العدل والمساواة</button>
+    <button class="moral-btn" onclick="showMoral(5)">🌟 الحلم والصبر</button>
+    <button class="moral-btn" onclick="showMoral(6)">🌟 الكرم والجود</button>
+    <button class="moral-btn" onclick="showMoral(7)">🌟 الحياء</button>
+    <button class="moral-btn" onclick="showMoral(8)">🌟 الزهد والقناعة</button>
+    <button class="moral-btn" onclick="showMoral(9)">🌟 الصدق في النية</button>
+    <button class="moral-btn" onclick="showMoral(10)">🌟 الاعتدال في العبادة</button>
+  </div>
+
+  <div id="moral-detail" class="moral-detail">
+    <p id="moral-text"></p>
+    <button class="back-btn" onclick="backToList()">رجوع لاختيار خلق آخر</button>
+  </div>
+
+  <div class="follow-prophet">
+    <h3>❓ كيف أجعل الرسول ﷺ قدوتي؟</h3>
+    <ul>
+      <li>🕊️ الدعاء: اسأل الله أن يحسن أخلاقك ويثبتك عليها.</li>
+      <li>📖 الممارسة: طبق الأخلاق يوميًا في حياتك الصغيرة والكبيرة.</li>
+      <li>👥 الصحبة: اجتمع بأشخاص ذوي أخلاق حسنة.</li>
+      <li>📚 القراءة: اقرأ سيرة النبي ﷺ وتأمل مواقفه وأقواله.</li>
+      <li>👀 المراقبة: راقب نفسك، أصلح الأخطاء، وواصل التحسن دائمًا.</li>
+    </ul>
+  </div>
+  <button class="next-btn" onclick="goToNext('love')">التالي →</button>  
+</section>
+
+<style>
+.morals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18vw, 1fr)); /* بدلاً من 180px */
+  gap: 2vh; /* بدلاً من 20px */
+  margin-top: 2vh; /* بدلاً من 20px */
+}
+
+.moral-btn {
+  padding: 1.5vh 2vw; /* بدلاً من 15px */
+  border-radius: 2vw; /* بدلاً من 15px */
+  border: none;
+  background: linear-gradient(145deg, #ffd54f, #ffc107);
+  color: #4e342e;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: inherit; /* الحفاظ على الخط */
+}
+
+.moral-btn:hover {
+  transform: translateY(-0.5vh); /* بدلاً من -5px */
+  box-shadow: 0 0.8vh 2vh rgba(0,0,0,0.3);
+}
+
+.moral-detail {
+  display: none;
+  margin-top: 3vh; /* بدلاً من 30px */
+  background: rgba(255, 193, 7, 0.2);
+  padding: 2vh 2vw; /* بدلاً من 20px */
+  border-radius: 2vw; /* بدلاً من 20px */
+  color: #fff;
+}
+
+.back-btn {
+  margin-top: 1.5vh; /* بدلاً من 15px */
+  padding: 1vh 1.5vw; /* بدلاً من 10px 15px */
+  border-radius: 1.5vw; /* بدلاً من 10px */
+  border: none;
+  background-color: #ffd54f;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #ffc107;
+}
+
+.follow-prophet {
+  margin-top: 4vh; /* بدلاً من 40px */
+  background: rgba(0,0,0,0.3);
+  padding: 2vh 2vw; /* بدلاً من 20px */
+  border-radius: 2vw; /* بدلاً من 20px */
+  color: #fff9c4;
+}
+
+.follow-prophet ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.follow-prophet li {
+  margin: 1vh 0; /* بدلاً من 10px */
+  font-size: 1.1vw; /* بدلاً من 1.1em */
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .morals-grid {
+    grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr));
+    gap: 4vh;
+    margin-top: 4vh;
+  }
+  .moral-btn {
+    padding: 3vh 4vw;
+    border-radius: 4vw;
+    font-size: 3.5vw;
+  }
+  .moral-detail {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    margin-top: 4vh;
+    font-size: 3.5vw;
+  }
+  .back-btn {
+    padding: 2vh 4vw;
+    border-radius: 4vw;
+    font-size: 3.5vw;
+  }
+  .follow-prophet {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    margin-top: 6vh;
+  }
+  .follow-prophet li {
+    font-size: 3.5vw;
+    margin: 2vh 0;
+  }
+}
+</style>
+
+
+<script>
+const moralsData = {
+  1: {
+    title: "🌟 الصدق والأمانة",
+    text: "كان النبي ﷺ دائم الصدق وأمينًا على أموال وأسرار الناس. كيف نتحلى به: قول الحقيقة دائمًا في السر والعلن، الوفاء بالعهد والمواثيق، وعدم خيانة الأمانة مهما كانت الظروف."
+  },
+  2: {
+    title: "🌟 الرحمة والتسامح",
+    text: "رحمة النبي ﷺ شملت كل خلق الله، وكان يسامح المسيئين ويعفو عنهم. كيف نتحلى به: اللطف في الكلام والتعامل مع الآخرين، العفو عن من أساء إلينا وعدم الانتقام."
+  },
+  3: {
+    title: "🌟 التواضع",
+    text: "رغم مكانته العظيمة، كان ﷺ يجلس مع الفقراء ويشاركهم حياتهم. كيف نتحلى به: عدم التفاخر أو التعالي على الآخرين، الاعتراف بالخطأ والاعتذار عند الحاجة."
+  },
+  4: {
+    title: "🌟 العدل والمساواة",
+    text: "كان ﷺ ينصف الجميع بلا تمييز، ويأمر بالحق حتى لو كان ضد نفسه أو أقرب الناس إليه. كيف نتحلى به: معاملة كل الناس بإنصاف، إعطاء كل ذي حق حقه، وعدم ظلم أحد."
+  },
+  5: {
+    title: "🌟 الحلم والصبر",
+    text: "كان ﷺ صبورًا، يتحمل الأذى ويصبر على المشاق دون غضب. كيف نتحلى به: التحكم في الغضب وعدم الانفعال، الصبر على الابتلاءات والمصاعب."
+  },
+  6: {
+    title: "🌟 الكرم والجود",
+    text: "كان ﷺ أكثر الناس سخاءً، يعطي بلا حدود ويبتسم في وجه الآخرين. كيف نتحلى به: مساعدة المحتاجين بما نملك، العطاء بسخاء دون انتظار مقابل."
+  },
+  7: {
+    title: "🌟 الحياء",
+    text: "كان النبي ﷺ شديد الحياء من الله في السر والعلن، وقدوة في الاحتشام. كيف نتحلى به: الابتعاد عن المحرمات والذنوب، التواضع في المظهر والسلوك، والامتناع عن التفاخر."
+  },
+  8: {
+    title: "🌟 الزهد والقناعة",
+    text: "كان ﷺ راضيًا بما قسم الله له، ولم يكن متعلقًا بالدنيا. كيف نتحلى به: الرضا بما قسمه الله، والابتعاد عن الطمع، الاهتمام بالآخرة أكثر من الدنيا."
+  },
+  9: {
+    title: "🌟 الصدق في النية",
+    text: "كان كل عمل يقوم به ﷺ خالصًا لله تعالى. كيف نتحلى به: إخلاص النية في كل قول وفعل، أداء الأعمال الصالحة للتقرب إلى الله فقط."
+  },
+  10: {
+    title: "🌟 الاعتدال في العبادة",
+    text: "كان ﷺ لا يفرط ولا يفوِّت، ويحث على المداومة دون إرهاق. كيف نتحلى به: أداء العبادة بانتظام واعتدال، الاستمرارية في الطاعات دون تفريط أو إفراط."
+  }
+};
+
+function showMoral(id) {
+  const detail = document.getElementById('moral-detail');
+  const text = document.getElementById('moral-text');
+  text.innerHTML = `<strong>${moralsData[id].title}</strong><br>${moralsData[id].text}`;
+  detail.style.display = 'block';
+  document.getElementById('morals-list').style.display = 'none';
+}
+
+function backToList() {
+  document.getElementById('moral-detail').style.display = 'none';
+  document.getElementById('morals-list').style.display = 'grid';
+}
+</script>
+
+
+  <section id="love">
+  <h2>❤️ لماذا نحبه ﷺ</h2>
+
+  <div class="paragraph" data-index="1">
+    أحبنا قبل أن نولد، فكان قلبه ﷺ ينبض بمودتنا قبل أن نرى الدنيا. قال ﷺ عن أمته: "وددت أني رأيت إخواني"، فأراد أن يطمئننا بحبه وحنانه الذي لا حدود له.
+  </div>
+
+  <div class="paragraph" data-index="2">
+    بكى لأجلنا، وأراد أن يحمي قلوبنا وروحنا، فقال: "أمتي أمتي"، فكان حزنه وسعادته مرتبطين بنا، وهو الذي حمل همنا واهتم بنا بكل رقة ورحمة.
+  </div>
+
+  <div class="paragraph" data-index="3">
+    علّمنا كيف نعيش بكرامة، وكيف نعامل الآخرين برحمة وعدل. علمنا أن نكون صالحين في أقوالنا وأفعالنا، وأن نزرع الحب والخير أينما كنا.
+  </div>
+
+  <div class="paragraph last">
+    ترك لنا نورًا لا ينطفئ: القرآن الكريم والسنة النبوية، ليكونا لنا دليلًا ومرشدًا في كل زمان ومكان، نورًا يضيء لنا الطريق، ويقودنا إلى السعادة والفلاح في الدنيا والآخرة. إن حبه ﷺ ليس مجرد شعور، بل هو منهج حياة، نتعلم منه الرحمة، والصدق، والتواضع، والكرم، والخلق الحسن، لنكون أمة تُرضي الله وتعيش بسلام ومحبة.
+  </div>
+    <button class="next-btn" onclick="goToNext('family')">التالي →</button>
+</section>
+
+<style>
+#why-love {
+  max-width: 90vw; /* بدلاً من 900px */
+  margin: auto;
+  padding: 5vh 2vw; /* بدلاً من 50px 20px */
+  font-family: 'Cairo', sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+#why-love h2 {
+  text-align: center;
+  font-size: 2.5vw; /* بدلاً من 2.5em */
+  margin-bottom: 5vh; /* بدلاً من 50px */
+  color: #ffd54f;
+  text-shadow: 0.2vw 0.2vw 1vw #ff8f00; /* بدلاً من 2px 2px 10px */
+}
+
+.paragraph {
+  opacity: 0;
+  transform: translateY(5vh); /* بدلاً من 50px */
+  margin: 3vh 0; /* بدلاً من 30px */
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  line-height: 1.8em;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2vh 2.5vw; /* بدلاً من 20px 25px */
+  border-radius: 1.5vw; /* بدلاً من 15px */
+  transition: all 1s ease-out;
+  box-shadow: 0 0 2vw rgba(255, 255, 255, 0.6); /* 🔥 ظل أبيض يلمع */
+}
+
+.paragraph.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.paragraph.last {
+  background: linear-gradient(135deg, #ffd54f, #ff6f00);
+  color: #1b1b1b;
+  font-size: 1.3vw; /* بدلاً من 1.3em */
+  font-weight: bold;
+  box-shadow: 0 0 2vw rgba(255, 233, 107, 0.728);
+  text-align: center;
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  #why-love {
+    padding: 6vh 4vw;
+  }
+  #why-love h2 {
+    font-size: 6vw;
+    margin-bottom: 6vh;
+  }
+  .paragraph {
+    font-size: 4vw;
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    margin: 4vh 0;
+    transform: translateY(8vh);
+  }
+  .paragraph.last {
+    font-size: 4.5vw;
+    box-shadow: 0 0 4vw rgba(255, 233, 107, 0.728);
+  }
+}
+</style>
+
+
+<script>
+const paragraphs = document.querySelectorAll('.paragraph');
+
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  paragraphs.forEach(paragraph => {
+    const paragraphTop = paragraph.getBoundingClientRect().top;
+    if(paragraphTop < triggerBottom){
+      paragraph.classList.add('visible');
+    }
+  });
+});
+</script>
+
+  <section id="family">
+  <h2>👨‍👩‍👧 أسرته ﷺ</h2>
+
+  <h3>زوجاته (أمهات المؤمنين)</h3>
+  <div class="grid">
+    <div class="card" onclick="showWifeInfo('خديجة')">خديجة بنت خويلد
+      <div class="info" id="wife-خديجة">أولى زوجاته وأم أولاده، تزوجها قبل البعثة وظلت معه حتى وفاتها.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('سودة')">سودة بنت زمعة
+      <div class="info" id="wife-سودة">تزوجها بعد وفاة خديجة، وكانت من أول من أسلم وهاجر.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('عائشة')">عائشة بنت أبي بكر
+      <div class="info" id="wife-عائشة">أحب زوجاته إليه، تزوجها بعد الهجرة، وكانت عالمة ومحدثة.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('حفصة')">حفصة بنت عمر
+      <div class="info" id="wife-حفصة">ابنة الخليفة الثاني، تزوجها بعد وفاة زوجها الأول.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('زينب1')">زينب بنت خزيمة
+      <div class="info" id="wife-زينب1">لقبت بأم المساكين، تزوجها بعد وفاة زوجها الأول.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('أم سلمة')">أم سلمة
+      <div class="info" id="wife-أم سلمة">أرملة، تزوجها بعد وفاة زوجها، وكان لها دور كبير في الهجرة.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('زينب2')">زينب بنت جحش
+      <div class="info" id="wife-زينب2">ابنة عمته، تزوجها بعد طلاقها من زيد بن حارثة.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('جويرية')">جويرية بنت الحارث
+      <div class="info" id="wife-جويرية">أسيرة من بني المصطلق، تزوجها بعد أن أعتقها.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('أم حبيبة')">أم حبيبة (رملة بنت أبي سفيان)
+      <div class="info" id="wife-أم حبيبة">ابنة أبي سفيان، تزوجها وهو في الحبشة.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('صفية')">صفية بنت حيي
+      <div class="info" id="wife-صفية">يهودية أسلمت، تزوجها بعد أن أعتقها.</div>
+    </div>
+    <div class="card" onclick="showWifeInfo('ميمونة')">ميمونة بنت الحارث
+      <div class="info" id="wife-ميمونة">آخر من تزوجهن، تزوجها في عمرة القضاء.</div>
+    </div>
+  </div>
+
+  <h3>أبناؤه ﷺ</h3>
+  <div class="grid">
+    <h4>ذكور</h4>
+    <div class="card" onclick="showChildInfo('القاسم')">القاسم
+      <div class="info" id="child-القاسم">أول أولاده، توفي صغيرًا.</div>
+    </div>
+    <div class="card" onclick="showChildInfo('عبد الله')">عبد الله
+      <div class="info" id="child-عبد الله">الطيب، الطاهر، توفي صغيرًا أيضًا.</div>
+    </div>
+    <div class="card" onclick="showChildInfo('إبراهيم')">إبراهيم
+      <div class="info" id="child-إبراهيم">من مارية القبطية، توفي في صغره.</div>
+    </div>
+    
+    <h4>إناث</h4>
+    <div class="card" onclick="showChildInfo('زينب')">زينب
+      <div class="info" id="child-زينب">أكبر بناته، أسلمت وهاجرت.</div>
+    </div>
+    <div class="card" onclick="showChildInfo('رقية')">رقية
+      <div class="info" id="child-رقية">تزوجها عثمان بن عفان، توفيت في السنة الثانية من الهجرة.</div>
+    </div>
+    <div class="card" onclick="showChildInfo('أم كلثوم')">أم كلثوم
+      <div class="info" id="child-أم كلثوم">تزوجها عثمان أيضًا، توفيت بعد أختها رقية.</div>
+    </div>
+    <div class="card" onclick="showChildInfo('فاطمة')">فاطمة الزهراء
+      <div class="info" id="child-فاطمة">أصغر بناته، تزوجت علي بن أبي طالب، توفيت بعده بستة أشهر.</div>
+    </div>
+  </div>
+    <button class="next-btn" onclick="goToNext('quiz')">التالي →</button>
+</section>
+
+<style>
+#family {
+  max-width: 95vw; /* بدلاً من 1000px */
+  margin: auto;
+  padding: 5vh 2vw; /* بدلاً من 50px 20px */
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+}
+
+#family h2, #family h3, #family h4 {
+  text-align: center;
+  margin-bottom: 3vh; /* بدلاً من 30px */
+  color: #ffd54f;
+  text-shadow: 0.1vw 0.1vw 1vw #ff8f00; /* بدلاً من 1px 1px 10px */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr)); /* بدلاً من 220px */
+  gap: 2.5vh; /* بدلاً من 25px */
+  margin-bottom: 5vh; /* بدلاً من 50px */
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2vh 2vw; /* بدلاً من 20px */
+  border-radius: 1.5vw; /* بدلاً من 15px */
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  font-size: 1.1vw; /* بدلاً من 1.1em */
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: translateY(-0.5vh); /* بدلاً من -5px */
+  background: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 2vw rgba(255, 215, 0, 0.6);
+}
+
+.info {
+  display: none;
+  margin-top: 1.5vh; /* بدلاً من 15px */
+  font-size: 0.95vw; /* بدلاً من 0.95em */
+  line-height: 1.6;
+  color: #fff;
+  padding: 1vh 1vw; /* بدلاً من 10px */
+  border-radius: 1vw; /* بدلاً من 10px */
+  background: rgba(0,0,0,0.5);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  #family {
+    padding: 6vh 4vw;
+  }
+  #family h2, #family h3, #family h4 {
+    font-size: 5vw;
+    margin-bottom: 4vh;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(60vw, 1fr));
+    gap: 4vh;
+    margin-bottom: 6vh;
+  }
+  .card {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    font-size: 4vw;
+  }
+  .card:hover {
+    transform: translateY(-1vh);
+    box-shadow: 0 0 4vw rgba(255, 215, 0, 0.6);
+  }
+  .info {
+    padding: 3vh 4vw;
+    border-radius: 4vw;
+    font-size: 4vw;
+    margin-top: 3vh;
+  }
+}
+</style>
+
+<script>
+function showWifeInfo(name) {
+  document.querySelectorAll('.info').forEach(el => el.style.display='none');
+  const info = document.getElementById('wife-' + name);
+  if(info){
+    info.style.display='block';
+  }
+}
+
+function showChildInfo(name) {
+  document.querySelectorAll('.info').forEach(el => el.style.display='none');
+  const info = document.getElementById('child-' + name);
+  if(info){
+    info.style.display='block';
+  }
+}
+</script>
+
+<section id="quiz">
+  <h2>📝 اختبر معرفتك</h2>
+
+  <!-- حقول الاسم والفصل -->
+  <div class="user-info">
+    <label>الاسم: <input type="text" id="studentName" required></label>
+    <label>الفصل: <input type="text" id="studentClass" required></label>
+  </div>
+
+  <form id="quizForm">
+    <div class="question">
+      <p>1. في أي عام وُلد النبي ﷺ؟</p>
+      <label><input type="radio" name="q1" value="wrong"> أ) 600م</label>
+      <label><input type="radio" name="q1" value="correct"> ب) 570م</label>
+      <label><input type="radio" name="q1" value="wrong"> ج) 622م</label>
+      <label><input type="radio" name="q1" value="wrong"> د) 610م</label>
+    </div>
+    <div class="question">
+      <p>2. ما لقب النبي ﷺ قبل البعثة؟</p>
+      <label><input type="radio" name="q2" value="correct"> أ) الصادق الأمين</label>
+      <label><input type="radio" name="q2" value="wrong"> ب) الفاضل الحكيم</label>
+      <label><input type="radio" name="q2" value="wrong"> ج) المحسن الكريم</label>
+      <label><input type="radio" name="q2" value="wrong"> د) قائد العرب</label>
+    </div>
+    <div class="question">
+      <p>3. من هي أول زوجة للنبي ﷺ؟</p>
+      <label><input type="radio" name="q3" value="wrong"> أ) عائشة بنت أبي بكر</label>
+      <label><input type="radio" name="q3" value="correct"> ب) خديجة بنت خويلد</label>
+      <label><input type="radio" name="q3" value="wrong"> ج) حفصة بنت عمر</label>
+      <label><input type="radio" name="q3" value="wrong"> د) أم سلمة</label>
+    </div>
+    <div class="question">
+      <p>4. من أول أبنائه ﷺ؟</p>
+      <label><input type="radio" name="q4" value="wrong"> أ) إبراهيم</label>
+      <label><input type="radio" name="q4" value="correct"> ب) القاسم</label>
+      <label><input type="radio" name="q4" value="wrong"> ج) عبد الله</label>
+      <label><input type="radio" name="q4" value="wrong"> د) الحسن</label>
+    </div>
+    <div class="question">
+      <p>5. من أصغر بناته ﷺ؟</p>
+      <label><input type="radio" name="q5" value="wrong"> أ) زينب</label>
+      <label><input type="radio" name="q5" value="wrong"> ب) رقية</label>
+      <label><input type="radio" name="q5" value="correct"> ج) فاطمة</label>
+      <label><input type="radio" name="q5" value="wrong"> د) أم كلثوم</label>
+    </div>
+    <div class="question">
+      <p>6. ما الذي تركه النبي ﷺ لأمته نورًا لا ينطفئ؟</p>
+      <label><input type="radio" name="q6" value="correct"> أ) القرآن والسنة</label>
+      <label><input type="radio" name="q6" value="wrong"> ب) مكة والمدينة</label>
+      <label><input type="radio" name="q6" value="wrong"> ج) الجيش والذخيرة</label>
+      <label><input type="radio" name="q6" value="wrong"> د) العلم والفنون</label>
+    </div>
+    <div class="question">
+      <p>7. في أي مدينة وُلد النبي ﷺ؟</p>
+      <label><input type="radio" name="q7" value="wrong"> أ) المدينة</label>
+      <label><input type="radio" name="q7" value="correct"> ب) مكة</label>
+      <label><input type="radio" name="q7" value="wrong"> ج) الطائف</label>
+      <label><input type="radio" name="q7" value="wrong"> د) يثرب</label>
+    </div>
+    <div class="question">
+      <p>8. من الصحابي الذي شارك مع النبي ﷺ في الهجرة وغطاه بعباءته في غار ثور؟</p>
+      <label><input type="radio" name="q8" value="wrong"> أ) علي بن أبي طالب</label>
+      <label><input type="radio" name="q8" value="correct"> ب) أبو بكر الصديق</label>
+      <label><input type="radio" name="q8" value="wrong"> ج) عمر بن الخطاب</label>
+      <label><input type="radio" name="q8" value="wrong"> د) حمزة بن عبد المطلب</label>
+    </div>
+    <div class="question">
+      <p>9. أي من زوجات النبي ﷺ كانت تُلقب بأم المساكين؟</p>
+      <label><input type="radio" name="q9" value="correct"> أ) زينب بنت خزيمة</label>
+      <label><input type="radio" name="q9" value="wrong"> ب) صفية بنت حيي</label>
+      <label><input type="radio" name="q9" value="wrong"> ج) ميمونة بنت الحارث</label>
+      <label><input type="radio" name="q9" value="wrong"> د) أم حبيبة</label>
+    </div>
+    <div class="question">
+      <p>10. من لقب بـ"أسد الله" وكان عم النبي ﷺ؟</p>
+      <label><input type="radio" name="q10" value="wrong"> أ) أبو طالب</label>
+      <label><input type="radio" name="q10" value="correct"> ب) حمزة بن عبد المطلب</label>
+      <label><input type="radio" name="q10" value="wrong"> ج) العباس</label>
+      <label><input type="radio" name="q10" value="wrong"> د) عبد المطلب</label>
+    </div>
+
+    <button type="button" id="checkBtn">تحقق من نتيجتك</button>
+  </form>
+
+  <div id="result"></div>
+
+  <button class="next-btn" onclick="goToNext('conclusion')">التالي →</button>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("checkBtn").addEventListener("click", function() {
+        const totalQuestions = 10;
+        let score = 0;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const answer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (answer && answer.value === "correct") score++;
+        }
+
+        const name = document.getElementById("studentName").value.trim();
+        const studentClass = document.getElementById("studentClass").value.trim();
+
+        if (!name || !studentClass) {
+            alert("يرجى إدخال الاسم والفصل!");
+            return;
+        }
+
+        document.getElementById("result").innerText = `${name} (${studentClass}) حصل على ${score} من ${totalQuestions}`;
+
+        // إرسال البيانات إلى Google Sheet
+        fetch(" https://script.google.com/macros/s/AKfycbxiFZpyYz63b2QA9W-iEAVSIx1ovgDfJL4ql_nOKM_PWeW97_e-FBY2SxXOHLFdmHA/exec", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, studentClass, score })
+        })
+        .then(res => res.json())
+        .then(data => console.log("تم حفظ البيانات:", data))
+        .catch(err => console.error("خطأ في الحفظ:", err));
+    });
+  </script>
+</section>
+
+<section id="conclusion">
+    <h2>✨ الختام والدعاء للنبي ﷺ</h2>
+  
+    <div class="conclusion-text">
+      <p>ميلاد خير البرية ﷺ ليس مجرد ذكرى، بل تذكير دائم لقلوبنا بعظمة هذا النبي العظيم.</p>
+      <p>حبنا ﷺ لا يكتمل إلا باتباع القرآن الكريم وسنته التي هدانا بها، فهذا اليوم فرصة لتجديد العهد على الاقتداء به.</p>
+      <br>
+      <p>قال الله تعالى: <span class="highlight">"إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ ۚ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا" [الأحزاب:56]</span></p>
+      <br>
+      <p>وورد عن النبي ﷺ: <span class="highlight">"من صلى عليّ صلاةً صلى الله عليه بها عشراً"</span></p>
+      
+      <button class="pray-btn" onclick="reciteSalawat()">💖 الصلاة على النبي ﷺ</button>
+      
+      <p id="salawat-display" class="salawat-display"></p>
+      <p>عدد الأجر: <span id="reward">0</span></p>
+    </div>
+  </section>
+  
+  <style>
+#conclusion {
+  background: linear-gradient(145deg, #1e2e51, #16213e);
+  padding: 5vh 2vw; /* بدلاً من 50px 20px */
+  border-radius: 2.5vw; /* بدلاً من 25px */
+  color: #fff;
+  text-align: center;
+  margin: 5vh auto; /* بدلاً من 50px */
+  max-width: 90vw; /* بدلاً من 900px */
+  box-shadow: 0 1vh 2.5vw rgba(0,0,0,0.5); /* بدلاً من 0 10px 25px */
+}
+
+#conclusion h2 {
+  font-size: 2.5vw; /* بدلاً من 2.5em */
+  margin-bottom: 3vh; /* بدلاً من 30px */
+  color: #ffd700;
+}
+
+.conclusion-text p {
+  font-size: 1.3vw; /* بدلاً من 1.3em */
+  line-height: 1.8;
+  margin-bottom: 2vh; /* بدلاً من 20px */
+}
+
+.highlight {
+  color: #ffd54f;
+  font-weight: bold;
+}
+
+.pray-btn {
+  padding: 1.5vh 3.5vw; /* بدلاً من 15px 35px */
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  border: none;
+  border-radius: 1.5vw; /* بدلاً من 15px */
+  background: linear-gradient(145deg, #ffd54f, #ffb300);
+  color: #4e342e;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 2vh; /* بدلاً من 20px */
+}
+
+.pray-btn:hover {
+  transform: translateY(-0.5vh); /* بدلاً من -5px */
+  box-shadow: 0 0.8vh 2.5vw rgba(0,0,0,0.4); /* بدلاً من 0 8px 25px */
+}
+
+.salawat-display {
+  margin-top: 2.5vh; /* بدلاً من 25px */
+  font-size: 1.5vw; /* بدلاً من 1.5em */
+  color: #ffd54f;
+  font-weight: bold;
+  min-height: 5vh; /* بدلاً من 50px */
+  line-height: 1.8;
+}
+
+#reward {
+  font-weight: bold;
+  color: #ffeb3b;
+  font-size: 1.5vw; /* بدلاً من 1.5em */
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  #conclusion {
+    padding: 6vh 4vw;
+    border-radius: 4vw;
+    margin: 6vh auto;
+  }
+  #conclusion h2 {
+    font-size: 6vw;
+    margin-bottom: 4vh;
+  }
+  .conclusion-text p {
+    font-size: 4vw;
+    margin-bottom: 3vh;
+  }
+  .pray-btn {
+    padding: 3vh 6vw;
+    font-size: 4vw;
+    border-radius: 4vw;
+    margin-top: 3vh;
+  }
+  .salawat-display {
+    margin-top: 3vh;
+    font-size: 4vw;
+    min-height: 6vh;
+  }
+  #reward {
+    font-size: 4vw;
+  }
+}
+</style>
+
+  <script>
+  let rewardCount = 0;
+  
+  function reciteSalawat() {
+    const display = document.getElementById('salawat-display');
+    const reward = document.getElementById('reward');
+    const salawat = "اللهم صل وسلم وبارك على نبينا محمد ﷺ";
+    
+    display.textContent = salawat;
+    
+    rewardCount += 10; // كل صلاة تضيف 10 كما في الحديث
+    reward.textContent = rewardCount;
+  
+    // تأثير وميض بسيط
+    display.style.opacity = 0;
+    setTimeout(() => {
+      display.style.opacity = 1;
+    }, 100);
+  }
+  </script>
+  
+  
+<style>
+#quiz {
+  max-width: 90vw; /* بدلاً من 800px */
+  margin: auto;
+  padding: 5vh 2vw; /* بدلاً من 50px 20px */
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+}
+
+#quiz h2 {
+  text-align: center;
+  margin-bottom: 4vh; /* بدلاً من 40px */
+  color: #ffd54f;
+  text-shadow: 0.1vw 0.1vw 1vw #ff8f00; /* بدلاً من 1px 1px 10px */
+}
+
+.question {
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 2.5vh; /* بدلاً من 25px */
+  padding: 2vh 2vw; /* بدلاً من 20px */
+  border-radius: 1.5vw; /* بدلاً من 15px */
+}
+
+label {
+  display: block;
+  margin: 0.8vh 0; /* بدلاً من 8px */
+  padding: 1vh 2vw; /* بدلاً من 10px */
+  border-radius: 1vw; /* بدلاً من 10px */
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+label:hover {
+  background: rgba(255, 215, 0, 0.3);
+  transform: translateX(0.5vw); /* بدلاً من 5px */
+}
+
+input[type="radio"] {
+  margin-right: 1vw; /* بدلاً من 10px */
+}
+
+#checkBtn {
+  margin-top: 2vh; /* بدلاً من 20px */
+  padding: 1.2vh 2.5vw; /* بدلاً من 12px 25px */
+  font-size: 1.2vw; /* بدلاً من 1em */
+  border: none;
+  border-radius: 1vw; /* بدلاً من 10px */
+  background: #ffd54f;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#checkBtn:hover {
+  background: #ffb300;
+}
+
+#result {
+  margin-top: 2.5vh; /* بدلاً من 25px */
+  padding: 1.5vh; /* بدلاً من 15px */
+  text-align: center;
+  font-size: 1.2vw; /* بدلاً من 1.2em */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0.1vw 0.1vw 0.8vw #ff8f00; /* بدلاً من 1px 1px 8px */
+}
+
+/* Media Query للشاشات الصغيرة */
+@media (max-width: 768px) {
+  #quiz {
+    padding: 6vh 4vw;
+  }
+  #quiz h2 {
+    font-size: 6vw;
+    margin-bottom: 5vh;
+  }
+  .question {
+    padding: 4vh 4vw;
+    border-radius: 4vw;
+    margin-bottom: 4vh;
+  }
+  label {
+    padding: 3vh 4vw;
+    border-radius: 4vw;
+    margin: 2vh 0;
+  }
+  input[type="radio"] {
+    margin-right: 4vw;
+  }
+  #checkBtn {
+    padding: 4vh 8vw;
+    font-size: 4vw;
+    border-radius: 4vw;
+    margin-top: 4vh;
+  }
+  #result {
+    font-size: 4vw;
+    padding: 4vh;
+    margin-top: 4vh;
+  }
+}
+</style>
+
+<script>
+const checkBtn = document.getElementById('checkBtn');
+const resultDiv = document.getElementById('result');
+
+checkBtn.addEventListener('click', () => {
+  let score = 0;
+  for(let i=1; i<=10; i++){
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if(selected && selected.value === "correct") score++;
+    
+    // تغيير لون الخيارات مباشرة بعد النقر
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(input=>{
+      const lbl = input.parentElement;
+      if(input.checked){
+        if(input.value === "correct") lbl.style.background = "#4caf50";
+        else lbl.style.background = "#f44336";
+      } else {
+        lbl.style.background = "rgba(255,255,255,0.05)";
+      }
+    });
+  }
+
+  let message = "";
+  if(score === 10) message = "🎉 ممتاز جدًا! لقد حصلت على الدرجة الكاملة!";
+  else if(score >= 7) message = "👍 جيد جدًا! ما شاء الله، لديك معرفة رائعة!";
+  else if(score >= 4) message = "🙂 جيد، لكن يمكنك تحسين معرفتك أكثر!";
+  else message = "😔 حاول مرة أخرى، ستتحسن بإذن الله!";
+  
+  resultDiv.innerHTML = `لقد حصلت على ${score}/10. ${message}`;
+});
+</script>
+
+   <script>
+    function startJourney(answer) {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('navbar').style.display = 'flex';
+      showPage('birth');
+      if (answer) {
+        alert("رائع! إنه يوم ميلاد النبي محمد ﷺ، الذي غيّر وجه التاريخ برسالته، وأضاء القلوب بأخلاقه وهدايته.");
+      } else {
+        alert("لا بأس 🌸، اليوم هو 12 ربيع الأول، يوم ميلاد النبي محمد ﷺ… دعنا نبدأ رحلتنا في سيرته العطرة ونكتشف أثره الخالد.");
+      }
+    }
+
+    function showPage(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      const btn = document.getElementById('btn-' + id);
+      if (btn) {
+        btn.classList.add('active');
+        btn.classList.add('completed');
+      }
+    }
+
+    function goToNext(nextId) {
+      showPage(nextId);
+      window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
+
+    }
+
+    function playNasheed() {
+      const audio = new Audio('nasheed.mp3');
+      audio.play();
+    }
+
+    function showWife(name) {
+      const info = {
+        "خديجة": "أم المؤمنين، أول من آمنت به، كانت سندًا له في بداية الدعوة.",
+        "عائشة": "أحب الناس إليه بعد خديجة، فقيهة، روت الكثير من الأحاديث.",
+        "حفصة": "ابنة عمر بن الخطاب، حافظة للقرآن، زوجة حكيمة.",
+        "أم سلمة": "من أمهات المؤمنين، صاحبة عقل وحكمة، شاركت في أحداث كثيرة."
+      };
+      document.getElementById('wifeInfo').textContent = info[name] || "معلومة غير متوفرة.";
+    }
+
+    function checkQuiz() {
+      const answer = document.getElementById('quizSelect').value;
+      const result = document.getElementById('quizResult');
+      if (answer === "570") {
+        result.textContent = "إجابة صحيحة! أنت تسير على خطى خير البرية ﷺ.";
+      } else if (answer === "") {
+        result.textContent = "اختر إجابة أولاً.";
+      } else {
+        result.textContent = "إجابة غير صحيحة. وُلد النبي ﷺ عام 570م، عام الفيل.";
+      }
+    }
+
+    // تأثير النجوم
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2,
+        speed: Math.random() * 0.5
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#fff';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) star.y = 0;
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    drawStars();
+  </script>
+  <!-- صفحة الخاتمة -->
+
+</body>
+</html>
