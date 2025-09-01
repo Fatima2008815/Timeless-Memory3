@@ -1263,7 +1263,7 @@ function showChildInfo(name) {
         document.getElementById("result").innerText = `${name} (${studentClass}) حصل على ${score} من ${totalQuestions}`;
 
         // إرسال البيانات إلى Google Sheet
-        fetch(" https://script.google.com/macros/s/AKfycbyV08HMv8Noojg3wDy6IVJEfaujxQwY3egb2eeEMEEkYyVzOuRQvlVPt5jEGnnvqHue/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbzonZ7Jtg4T2_xwPJcW5e_kYu_AC66bpdV72Tvn7hdAox_uiu0uAsgR_3t_pBT6Buk/exec", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, studentClass, score })
@@ -1641,3 +1641,4 @@ checkBtn.addEventListener('click', () => {
 </body>
 
 </html>
+
